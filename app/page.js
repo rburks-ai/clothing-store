@@ -91,14 +91,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Notification */}
       {notification && (
-        <div className="fixed top-20 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg animate-slide-in">
+        <div className="fixed top-20 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
           {notification}
         </div>
       )}
 
-      {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -113,7 +111,7 @@ export default function Home() {
               <a href="#" className="text-gray-700 hover:text-indigo-600 transition font-medium">New Arrivals</a>
               <a href="#" className="text-gray-700 hover:text-indigo-600 transition font-medium">Men</a>
               <a href="#" className="text-gray-700 hover:text-indigo-600 transition font-medium">Women</a>
-              <a href="#" className="text-red-600 hover:text-red-700 transition font-medium">Sale 🔥</a>
+              <a href="#" className="text-red-600 hover:text-red-700 transition font-medium">Sale</a>
             </nav>
 
             <div className="flex items-center space-x-2">
@@ -175,13 +173,12 @@ export default function Home() {
               <a href="#" className="block py-2 text-gray-700 hover:text-indigo-600">New Arrivals</a>
               <a href="#" className="block py-2 text-gray-700 hover:text-indigo-600">Men</a>
               <a href="#" className="block py-2 text-gray-700 hover:text-indigo-600">Women</a>
-              <a href="#" className="block py-2 text-red-600 hover:text-red-700">Sale 🔥</a>
+              <a href="#" className="block py-2 text-red-600 hover:text-red-700">Sale</a>
             </div>
           </div>
         )}
       </header>
 
-      {/* Shopping Cart Sidebar */}
       {cartOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
           <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setCartOpen(false)} />
@@ -257,7 +254,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Product Quick View Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-center justify-center min-h-screen px-4">
@@ -302,7 +298,7 @@ export default function Home() {
                   
                   <div className="mb-4">
                     <label className="block font-semibold mb-2">Size:</label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap">
                       {selectedProduct.sizes.map(size => (
                         <button 
                           key={size}
@@ -316,7 +312,7 @@ export default function Home() {
 
                   <div className="mb-6">
                     <label className="block font-semibold mb-2">Color:</label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap">
                       {selectedProduct.colors.map(color => (
                         <button 
                           key={color}
@@ -349,7 +345,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Hero */}
       <div className="relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img 
@@ -378,7 +373,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Filter Bar */}
       <div className="bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -414,7 +408,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <p className="text-gray-600">
           Showing <span className="font-semibold text-gray-900">{filteredProducts.length}</span> products
@@ -422,7 +415,6 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Products */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-20">
@@ -483,7 +475,7 @@ export default function Home() {
                     <span className="text-xs text-gray-500">({product.reviews})</span>
                   </div>
                   
-                  <h3 className="text-base font-semibold text-gray-900 mb-1 line-clamp-1">{product.name}</h3>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">{product.name}</h3>
                   
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-lg font-bold text-indigo-600">${product.price.toFixed(2)}</span>
@@ -518,19 +510,49 @@ export default function Home() {
         )}
       </div>
 
-      {/* Features Section */}
-      <div className="bg-gray-50 py-16 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-block p-4 bg-indigo-100 rounded-full mb-4">
-                <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Free Shipping</h3>
-              <p className="text-gray-600">On orders over $50</p>
+      <footer className="bg-gray-900 text-white mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">STYLEHAUS</h3>
+              <p className="text-gray-400">Your destination for contemporary fashion</p>
             </div>
-            <div className="text-center">
-              <div className="inline-block p-4 bg-indigo-100 rounded-full mb-4">
-                <svg className="w
+            <div>
+              <h4 className="font-semibold mb-4">Shop</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white">New Arrivals</a></li>
+                <li><a href="#" className="hover:text-white">Best Sellers</a></li>
+                <li><a href="#" className="hover:text-white">Sale</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white">About Us</a></li>
+                <li><a href="#" className="hover:text-white">Contact</a></li>
+                <li><a href="#" className="hover:text-white">Careers</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Help</h4>
+              <ul className="space-y-2 text-gray-400">
+                                <li><a href="#" className="hover:text-white">Shipping</a></li>
+                <li><a href="#" className="hover:text-white">Returns</a></li>
+                <li><a href="#" className="hover:text-white">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+            <p>© {new Date().getFullYear()} STYLEHAUS. All rights reserved.</p>
+            <div className="flex gap-4 mt-4 md:mt-0">
+              <a href="#" className="hover:text-white">Privacy Policy</a>
+              <a href="#" className="hover:text-white">Terms of Service</a>
+              <a href="#" className="hover:text-white">Cookies</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
