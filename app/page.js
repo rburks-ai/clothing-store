@@ -1,9 +1,7 @@
-'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ShoppingCart, Menu, X, Search, Heart, User } from 'lucide-react';
 
-export default function Home() {
+const ClothingStore = () => {
   const [cart, setCart] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -36,10 +34,12 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
+            {/* Logo */}
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-bold text-gray-900">STYLEHAUS</h1>
             </div>
 
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               <a href="#" className="text-gray-700 hover:text-gray-900">New Arrivals</a>
               <a href="#" className="text-gray-700 hover:text-gray-900">Men</a>
@@ -47,6 +47,7 @@ export default function Home() {
               <a href="#" className="text-gray-700 hover:text-gray-900">Sale</a>
             </nav>
 
+            {/* Icons */}
             <div className="flex items-center space-x-4">
               <button className="p-2 text-gray-700 hover:text-gray-900">
                 <Search size={20} />
@@ -75,6 +76,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden border-t border-gray-200">
             <div className="px-4 py-4 space-y-2">
@@ -87,7 +89,7 @@ export default function Home() {
         )}
       </header>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">
           <img 
@@ -105,7 +107,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Categories */}
+      {/* Category Filter */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-wrap gap-2 justify-center">
           {categories.map(cat => (
@@ -124,7 +126,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Products */}
+      {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map(product => (
@@ -149,7 +151,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Mobile Cart */}
+      {/* Cart Summary (Fixed Bottom on Mobile) */}
       {totalItems > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 md:hidden z-40">
           <div className="flex items-center justify-between">
@@ -204,4 +206,6 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+};
+
+export default ClothingStore;
